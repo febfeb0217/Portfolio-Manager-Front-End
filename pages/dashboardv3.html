@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asset Manager Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+  </head>
+  <body>
+    <!-- 移动端菜单按钮 -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- 移动端遮罩层 -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- 侧边栏 -->
+    <aside class="sidebar expanded" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-icon">A</div>
+          <div class="sidebar-logo-text">Asset Manager</div>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+
+      <!-- 导航区域容器 - 用于滚动 -->
+      <div class="sidebar-nav-container">
+        <ul class="sidebar-nav">
+          <li>
+            <a href="#" class="active">
+              <i class="fas fa-chart-pie sidebar-nav-icon"></i>
+              <span class="sidebar-nav-text">Portfolio Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-chart-line sidebar-nav-icon"></i>
+              <span class="sidebar-nav-text">Stock Market</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-exchange-alt sidebar-nav-icon"></i>
+              <span class="sidebar-nav-text">Trading</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-history sidebar-nav-icon"></i>
+              <span class="sidebar-nav-text">Trading History</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-cog sidebar-nav-icon"></i>
+              <span class="sidebar-nav-text">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 用户信息区域 - 固定在底部 -->
+      <div class="user-profile">
+        <div class="user-info">
+          <img
+            src="https://picsum.photos/id/64/200/200"
+            alt="User Avatar"
+            class="user-avatar"
+          />
+          <div class="user-details">
+            <div class="user-name">Jenny Wilson</div>
+            <div class="user-email">jenny.wilson@example.com</div>
+          </div>
+        </div>
+
+        <!-- 单独拆分的退出登录按钮 -->
+        <div class="sign-out-container">
+          <a href="#" class="sign-out" id="signOutLink">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="sign-out-text">Sign Out</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 主内容区域 -->
+    <div class="main">
+      <!-- 顶部欢迎区 -->
+      <div class="top-section">
+        <div class="greeting">
+          <h1>Welcome back, Jenny</h1>
+          <p>Here's your portfolio overview for today</p>
+        </div>
+        <button class="toggle-btn" id="hideBalanceBtn">
+          <i class="fas fa-eye-slash"></i>
+          <span>Hide Balance</span>
+        </button>
+      </div>
+
+      <!-- 数据卡片区 -->
+      <div class="cards-grid" id="cardsGrid">
+        <div class="card">
+          <div class="card-header">
+            <i class="fas fa-wallet"></i>
+            Total Assets
+          </div>
+          <div class="card-value" id="totalAssets">$52,850.00</div>
+          <div class="card-metric card-positive">
+            <i class="fas fa-arrow-up"></i>
+            +5.70% Total Return
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <i class="fas fa-money-bill-wave"></i>
+            Cash Balance
+          </div>
+          <div class="card-value" id="cashBalance">$15,000.00</div>
+          <div class="card-metric">
+            <i class="fas fa-check-circle"></i>
+            Available Funds
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <i class="fas fa-chart-line"></i>
+            Stock Holdings
+          </div>
+          <div class="card-value" id="stockHoldings">$37,850.00</div>
+          <div class="card-metric">
+            <i class="fas fa-chart-pie"></i>
+            Market Value
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <i class="fas fa-balance-scale"></i>
+            P&L
+          </div>
+          <div class="card-value card-positive" id="pnl">$2,850.00</div>
+          <div class="card-metric card-positive">
+            <i class="fas fa-arrow-up"></i>
+            +5.70%
+          </div>
+        </div>
+      </div>
+
+      <!-- 图表区 -->
+      <div class="charts-section">
+        <!-- 资产表现图表 -->
+        <div class="chart-card">
+          <h3>
+            <i class="fas fa-chart-line"></i>
+            Asset Performance (Past 6 Months)
+          </h3>
+          <div class="chart-container">
+            <div class="line-chart">
+              <div class="chart-axis chart-x-axis"></div>
+              <div class="chart-axis chart-y-axis"></div>
+              <div class="chart-line"></div>
+              <div class="chart-dots">
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+                <div class="chart-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 资产配置图表 -->
+        <div class="chart-card">
+          <h3>
+            <i class="fas fa-pie-chart"></i>
+            Asset Allocation
+          </h3>
+          <div class="pie-chart" id="allocationChart"></div>
+          <ul class="allocation-list">
+            <li class="allocation-item">
+              <div class="allocation-info">
+                <div
+                  class="allocation-color"
+                  style="background-color: var(--secondary)"
+                ></div>
+                <span class="allocation-name">Cash</span>
+              </div>
+              <span class="allocation-value">28.4%</span>
+            </li>
+            <li class="allocation-item">
+              <div class="allocation-info">
+                <div
+                  class="allocation-color"
+                  style="background-color: var(--primary)"
+                ></div>
+                <span class="allocation-name">AAPL</span>
+              </div>
+              <span class="allocation-value">17.5%</span>
+            </li>
+            <li class="allocation-item">
+              <div class="allocation-info">
+                <div
+                  class="allocation-color"
+                  style="background-color: var(--success)"
+                ></div>
+                <span class="allocation-name">GOOGL</span>
+              </div>
+              <span class="allocation-value">30.2%</span>
+            </li>
+            <li class="allocation-item">
+              <div class="allocation-info">
+                <div
+                  class="allocation-color"
+                  style="background-color: #f59e0b"
+                ></div>
+                <span class="allocation-name">MSFT</span>
+              </div>
+              <span class="allocation-value">23.9%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 当前持仓区 -->
+      <div class="holdings-section">
+        <div class="holdings-header">
+          <h2>
+            <i class="fas fa-list"></i>
+            Current Holdings
+          </h2>
+          <a href="#">
+            View All
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+        <table class="holdings-table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Change</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="symbol">AAPL</td>
+              <td>10</td>
+              <td class="price">$175.00</td>
+              <td class="positive">+2.45%</td>
+              <td class="value">$1,750.00</td>
+            </tr>
+            <tr>
+              <td class="symbol">GOOGL</td>
+              <td>5</td>
+              <td class="price">$1,250.00</td>
+              <td class="positive">+1.82%</td>
+              <td class="value">$6,250.00</td>
+            </tr>
+            <tr>
+              <td class="symbol">MSFT</td>
+              <td>8</td>
+              <td class="price">$350.00</td>
+              <td class="positive">+3.10%</td>
+              <td class="value">$2,800.00</td>
+            </tr>
+            <tr>
+              <td class="symbol">AMZN</td>
+              <td>3</td>
+              <td class="price">$135.00</td>
+              <td class="positive">+0.75%</td>
+              <td class="value">$405.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      // 侧边栏折叠/展开功能
+      const sidebar = document.getElementById("sidebar");
+      const sidebarToggle = document.getElementById("sidebarToggle");
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileOverlay = document.getElementById("mobileOverlay");
+
+      // 切换侧边栏状态
+      function toggleSidebar() {
+        sidebar.classList.toggle("collapsed");
+        sidebar.classList.toggle("expanded");
+
+        // 切换图标
+        const icon = sidebarToggle.querySelector("i");
+        if (sidebar.classList.contains("collapsed")) {
+          icon.classList.remove("fa-chevron-left");
+          icon.classList.add("fa-chevron-right");
+        } else {
+          icon.classList.remove("fa-chevron-right");
+          icon.classList.add("fa-chevron-left");
+        }
+      }
+
+      // 移动端菜单控制
+      function toggleMobileMenu() {
+        sidebar.classList.toggle("collapsed");
+        sidebar.classList.toggle("expanded");
+        mobileOverlay.classList.toggle("active");
+
+        // 切换图标
+        const icon = sidebarToggle.querySelector("i");
+        if (sidebar.classList.contains("collapsed")) {
+          icon.classList.remove("fa-chevron-left");
+          icon.classList.add("fa-chevron-right");
+        } else {
+          icon.classList.remove("fa-chevron-right");
+          icon.classList.add("fa-chevron-left");
+        }
+      }
+
+      sidebarToggle.addEventListener("click", toggleSidebar);
+      mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+      mobileOverlay.addEventListener("click", toggleMobileMenu);
+
+      // 隐藏/显示余额功能
+      const hideBalanceBtn = document.getElementById("hideBalanceBtn");
+      const balanceElements = document.querySelectorAll(".card-value, .value");
+
+      // 保存原始值
+      balanceElements.forEach((el) => {
+        el.setAttribute("data-original", el.textContent);
+      });
+
+      hideBalanceBtn.addEventListener("click", () => {
+        const isHidden = hideBalanceBtn
+          .querySelector("i")
+          .classList.contains("fa-eye");
+
+        balanceElements.forEach((el) => {
+          if (isHidden) {
+            // 显示余额
+            el.textContent = el.getAttribute("data-original");
+          } else {
+            // 隐藏余额
+            el.textContent = "*****";
+          }
+        });
+
+        // 切换按钮图标和文本
+        const icon = hideBalanceBtn.querySelector("i");
+        const text = hideBalanceBtn.querySelector("span");
+
+        if (isHidden) {
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+          text.textContent = "Hide Balance";
+        } else {
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+          text.textContent = "Show Balance";
+        }
+      });
+
+      // 退出登录功能
+      const signOutLink = document.getElementById("signOutLink");
+      signOutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (confirm("Are you sure you want to sign out?")) {
+          // 这里可以添加实际的退出登录逻辑
+          alert("Signing out...");
+          // 示例：跳转到登录页
+          // window.location.href = 'login.html';
+        }
+      });
+
+      // 响应式处理
+      function handleResize() {
+        if (window.innerWidth >= 769) {
+          sidebar.classList.remove("collapsed");
+          sidebar.classList.add("expanded");
+          mobileOverlay.classList.remove("active");
+
+          const icon = sidebarToggle.querySelector("i");
+          icon.classList.remove("fa-chevron-right");
+          icon.classList.add("fa-chevron-left");
+        } else {
+          sidebar.classList.remove("expanded");
+          sidebar.classList.add("collapsed");
+        }
+      }
+
+      // 初始化时调用一次
+      handleResize();
+
+      // 监听窗口大小变化
+      window.addEventListener("resize", handleResize);
+    </script>
+  </body>
+</html>

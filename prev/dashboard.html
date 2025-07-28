@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asset Manager Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-header">
+          <h2>
+            <!-- 简单Logo占位 -->
+            <span
+              style="
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background: #d63333;
+                border-radius: 4px;
+              "
+            ></span>
+            Asset Manager
+          </h2>
+        </div>
+        <ul class="sidebar-nav">
+          <li><a href="#" class="active">Portfolio Dashboard</a></li>
+          <li><a href="#">Stock Market</a></li>
+          <li><a href="#">Trading</a></li>
+          <li><a href="#">Trading History</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <!-- 用户头像占位 -->
+          <div
+            style="
+              width: 40px;
+              height: 40px;
+              background: #eee;
+              border-radius: 50%;
+            "
+          ></div>
+          <div class="details">
+            <div>Jenny Wilson</div>
+            <div>jenny.wilson@example.com</div>
+          </div>
+        </div>
+        <a href="#" class="sign-out">Sign Out</a>
+      </div>
+    </aside>
+
+    <!-- 主内容区域 -->
+    <div class="main">
+      <!-- 顶部欢迎区 -->
+      <div class="top-section">
+        <div class="greeting">
+          <h1>Welcome back, Jenny</h1>
+          <p>Here's your portfolio overview for today</p>
+        </div>
+        <button class="toggle-btn" id="hideBalanceBtn">Hide Balance</button>
+      </div>
+
+      <!-- 数据卡片区 -->
+      <div class="cards-grid" id="cardsGrid">
+        <div class="card">
+          <div class="card-header">Total Assets</div>
+          <div class="card-value" id="totalAssets">$52,850.00</div>
+          <div class="card-metric card-positive">+5.70% Total Return</div>
+        </div>
+        <div class="card">
+          <div class="card-header">Cash Balance</div>
+          <div class="card-value" id="cashBalance">$15,000.00</div>
+          <div class="card-metric">Available Funds</div>
+        </div>
+        <div class="card">
+          <div class="card-header">Stock Holdings</div>
+          <div class="card-value" id="stockHoldings">$37,850.00</div>
+          <div class="card-metric">Market Value</div>
+        </div>
+        <div class="card">
+          <div class="card-header">P&L</div>
+          <div class="card-value card-positive" id="pnl">$2,850.00</div>
+          <div class="card-metric card-positive">+5.70%</div>
+        </div>
+      </div>
+
+      <!-- 图表区 -->
+      <div class="charts-section">
+        <!-- 资产表现图表 -->
+        <div class="chart-card">
+          <h3>Asset Performance (Past 6 Months)</h3>
+          <!-- 模拟图表占位 -->
+          <div class="chart-placeholder" id="performanceChart">
+            Line Chart Placeholder
+          </div>
+        </div>
+        <!-- 资产配置图表 -->
+        <div class="chart-card">
+          <h3>Asset Allocation</h3>
+          <div class="pie-chart" id="allocationChart"></div>
+          <ul class="allocation-list">
+            <li><span>Cash</span><span>28.4%</span></li>
+            <li><span>AAPL</span><span>17.5%</span></li>
+            <li><span>GOOGL</span><span>53.9%</span></li>
+            <li><span>MSFT</span><span>20.2%</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 当前持仓区 -->
+      <div class="holdings-section">
+        <div class="holdings-header">
+          <h2>Current Holdings</h2>
+          <a href="#">View All</a>
+        </div>
+        <table class="holdings-table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AAPL</td>
+              <td>10</td>
+              <td>$175.00</td>
+              <td>$1,750.00</td>
+            </tr>
+            <tr>
+              <td>GOOGL</td>
+              <td>5</td>
+              <td>$1,250.00</td>
+              <td>$6,250.00</td>
+            </tr>
+            <tr>
+              <td>MSFT</td>
+              <td>8</td>
+              <td>$350.00</td>
+              <td>$2,800.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      // 隐藏余额功能（模拟）
+      const hideBalanceBtn = document.getElementById("hideBalanceBtn");
+      const cards = document.querySelectorAll(".card-value");
+
+      hideBalanceBtn.addEventListener("click", () => {
+        cards.forEach((card) => {
+          card.textContent = card.textContent.includes("$")
+            ? "*****"
+            : card.getAttribute("data-original");
+        });
+
+        // 切换按钮文字
+        hideBalanceBtn.textContent =
+          hideBalanceBtn.textContent === "Hide Balance"
+            ? "Show Balance"
+            : "Hide Balance";
+      });
+
+      // 初始化保存原始数据（可选）
+      cards.forEach((card) => {
+        card.setAttribute("data-original", card.textContent);
+      });
+    </script>
+  </body>
+</html>
