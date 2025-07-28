@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-manager-front-end",
+  "version": "1.0.0",
+  "description": "This is for landing page, sign-in page and user dashboard page",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/febfeb0217/Portfolio-Manager-Front-End.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/febfeb0217/Portfolio-Manager-Front-End/issues"
+  },
+  "homepage": "https://github.com/febfeb0217/Portfolio-Manager-Front-End#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
