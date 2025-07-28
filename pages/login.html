@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AssetPro - Login</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <!-- 可选：如需图标可引入 FontAwesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> -->
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="back-home">
+        <a href="index.html">&larr; Back to Home</a>
+      </div>
+      <div class="brand">
+        <!-- 简易 Logo 样式，可替换为实际图标 -->
+        <span class="logo">|||</span>
+        <h1>AssetPro</h1>
+      </div>
+      <p class="subtitle">Sign in to your account</p>
+
+      <div class="card">
+        <h2>Welcome Back</h2>
+        <p>Enter your credentials to access your portfolio</p>
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="demo-info">
+            <p>Demo Account:</p>
+            <p>Username: demo</p>
+            <p>Password: demo</p>
+          </div>
+          <button type="submit" class="btn signin-btn">Sign In</button>
+          <button
+            type="button"
+            class="btn demo-btn"
+            onclick="autoFillDemo(), navigateTo('dashboard.html')"
+          >
+            Quick Demo Login
+          </button>
+        </form>
+        <p class="note">
+          This is a demo application. Use the credentials above to explore the
+          features.
+        </p>
+      </div>
+
+      <footer class="login-footer">&copy; 2025 AssetPro. Demo Version</footer>
+    </div>
+
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

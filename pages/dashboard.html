@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
   </head>
   <body>
     <!-- 移动端菜单按钮 -->
@@ -112,7 +112,7 @@
             <i class="fas fa-wallet"></i>
             Total Assets
           </div>
-          <div class="card-value" id="totalAssets">$52,850.00</div>
+          <div class="card-value" id="totalAssets"></div>
           <div class="card-metric card-positive">
             <i class="fas fa-arrow-up"></i>
             +5.70% Total Return
@@ -123,7 +123,7 @@
             <i class="fas fa-money-bill-wave"></i>
             Cash Balance
           </div>
-          <div class="card-value" id="cashBalance">$15,000.00</div>
+          <div class="card-value" id="cashBalance"></div>
           <div class="card-metric">
             <i class="fas fa-check-circle"></i>
             Available Funds
@@ -134,7 +134,7 @@
             <i class="fas fa-chart-line"></i>
             Stock Holdings
           </div>
-          <div class="card-value" id="stockHoldings">$37,850.00</div>
+          <div class="card-value" id="stockHoldings"></div>
           <div class="card-metric">
             <i class="fas fa-chart-pie"></i>
             Market Value
@@ -290,122 +290,6 @@
       </div>
     </div>
 
-    <script>
-      // 侧边栏折叠/展开功能
-      const sidebar = document.getElementById("sidebar");
-      const sidebarToggle = document.getElementById("sidebarToggle");
-      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-      const mobileOverlay = document.getElementById("mobileOverlay");
-
-      // 切换侧边栏状态
-      function toggleSidebar() {
-        sidebar.classList.toggle("collapsed");
-        sidebar.classList.toggle("expanded");
-
-        // 切换图标
-        const icon = sidebarToggle.querySelector("i");
-        if (sidebar.classList.contains("collapsed")) {
-          icon.classList.remove("fa-chevron-left");
-          icon.classList.add("fa-chevron-right");
-        } else {
-          icon.classList.remove("fa-chevron-right");
-          icon.classList.add("fa-chevron-left");
-        }
-      }
-
-      // 移动端菜单控制
-      function toggleMobileMenu() {
-        sidebar.classList.toggle("collapsed");
-        sidebar.classList.toggle("expanded");
-        mobileOverlay.classList.toggle("active");
-
-        // 切换图标
-        const icon = sidebarToggle.querySelector("i");
-        if (sidebar.classList.contains("collapsed")) {
-          icon.classList.remove("fa-chevron-left");
-          icon.classList.add("fa-chevron-right");
-        } else {
-          icon.classList.remove("fa-chevron-right");
-          icon.classList.add("fa-chevron-left");
-        }
-      }
-
-      sidebarToggle.addEventListener("click", toggleSidebar);
-      mobileMenuBtn.addEventListener("click", toggleMobileMenu);
-      mobileOverlay.addEventListener("click", toggleMobileMenu);
-
-      // 隐藏/显示余额功能
-      const hideBalanceBtn = document.getElementById("hideBalanceBtn");
-      const balanceElements = document.querySelectorAll(".card-value, .value");
-
-      // 保存原始值
-      balanceElements.forEach((el) => {
-        el.setAttribute("data-original", el.textContent);
-      });
-
-      hideBalanceBtn.addEventListener("click", () => {
-        const isHidden = hideBalanceBtn
-          .querySelector("i")
-          .classList.contains("fa-eye");
-
-        balanceElements.forEach((el) => {
-          if (isHidden) {
-            // 显示余额
-            el.textContent = el.getAttribute("data-original");
-          } else {
-            // 隐藏余额
-            el.textContent = "*****";
-          }
-        });
-
-        // 切换按钮图标和文本
-        const icon = hideBalanceBtn.querySelector("i");
-        const text = hideBalanceBtn.querySelector("span");
-
-        if (isHidden) {
-          icon.classList.remove("fa-eye");
-          icon.classList.add("fa-eye-slash");
-          text.textContent = "Hide Balance";
-        } else {
-          icon.classList.remove("fa-eye-slash");
-          icon.classList.add("fa-eye");
-          text.textContent = "Show Balance";
-        }
-      });
-
-      // 退出登录功能
-      const signOutLink = document.getElementById("signOutLink");
-      signOutLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (confirm("Are you sure you want to sign out?")) {
-          // 这里可以添加实际的退出登录逻辑
-          alert("Signing out...");
-          // 示例：跳转到登录页
-          // window.location.href = 'login.html';
-        }
-      });
-
-      // 响应式处理
-      function handleResize() {
-        if (window.innerWidth >= 769) {
-          sidebar.classList.remove("collapsed");
-          sidebar.classList.add("expanded");
-          mobileOverlay.classList.remove("active");
-
-          const icon = sidebarToggle.querySelector("i");
-          icon.classList.remove("fa-chevron-right");
-          icon.classList.add("fa-chevron-left");
-        } else {
-          sidebar.classList.remove("expanded");
-          sidebar.classList.add("collapsed");
-        }
-      }
-
-      // 初始化时调用一次
-      handleResize();
-
-      // 监听窗口大小变化
-      window.addEventListener("resize", handleResize);
-    </script>
+    <script src="scripts/dashboard.js"></script>
   </body>
 </html>
